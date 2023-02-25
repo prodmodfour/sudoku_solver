@@ -1,7 +1,28 @@
 import unittest
-from sudoku_solver import solve, Board
+from board import Board
+from solve_problem import solve
+from validate_problem import validate
 
 class TestSolver(unittest.TestCase):
+
+	def test_validate(self):
+		"""
+		Tests whether the validate method can correctly return Tre in the event 
+		that it is given a valid sudoku problem.
+		"""
+		sudoku_problem = [
+			[8, 0, 2, 1, 7, 0, 0, 0, 6],
+			[0, 9, 0, 0, 0, 8, 0, 5, 3],
+			[0, 4, 0, 3, 0, 0, 0, 1, 8],
+			[0, 0, 0, 8, 0, 0, 6, 4, 0],
+			[9, 8, 0, 0, 2, 7, 0, 0, 1],
+			[0, 0, 3, 0, 9, 0, 0, 2, 7],
+			[5, 0, 1, 9, 0, 0, 0, 7, 0],
+			[0, 7, 0, 4, 5, 1, 9, 6, 0],
+			[4, 2, 9, 0, 3, 0, 0, 0, 0],
+		]
+
+		self.assertTrue(validate(sudoku_problem))
 
 	def test_solve(self):
 		"""
@@ -35,6 +56,7 @@ class TestSolver(unittest.TestCase):
 		program_solution = solve(sudoku_problem)
 
 		self.assertEqual(program_solution, true_solution)
+
 
 if __name__ == "__main__":
 	unittest.main()
