@@ -14,6 +14,7 @@ class Board:
 		"""
 
 		self.state = []
+		self.sudoku_problem = sudoku_problem
 
 		for row in sudoku_problem:
 			row = row.copy()
@@ -105,7 +106,8 @@ class Board:
 		return current_nonet
 
 	def backtrack_to_previous_square(self):
-		self.state[self.row_num][self.column_num] = 0
+		if self.sudoku_problem[self.row_num][self.column_num] == 0:
+			self.state[self.row_num][self.column_num] = 0
 
 		if self.column_num > 0:
 			self.column_num -= 1
