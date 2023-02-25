@@ -47,6 +47,7 @@ class Board:
 		Checks whether or not the current value in the current square is valid 
 		in accordance with sudoku rules.
 		"""
+
 		if self._validate_row() is False:
 			return False
 		elif self._validate_column() is False:
@@ -80,6 +81,7 @@ class Board:
 	def _validate_nonet(self):
 		# A nonet is also known as a block.
 		current_nonet = self._create_current_nonet()
+
 		if self.current_square in current_nonet:
 			return False
 
@@ -92,6 +94,8 @@ class Board:
 		y = int(self.row_num / 3)
 		y *= 3
 
+		# Iterates across the nonet and adds each square to the current nonet
+		# list. 
 		for i in range(3):
 			for j in range(3):
 				square = self.state[y][x]
@@ -106,6 +110,8 @@ class Board:
 		return current_nonet
 
 	def backtrack_to_previous_square(self):
+		# if the correct answer for the current square has no been given by the
+		# sudoku problem, sets the current square to 0.
 		if self.sudoku_problem[self.row_num][self.column_num] == 0:
 			self.state[self.row_num][self.column_num] = 0
 
@@ -156,7 +162,6 @@ def solve(sudoku_problem):
 	print(f"Solution: {board.state}")
 
 	return board.state
-
 
 if __name__ == "__main__":
 	sudoku_problem = [
