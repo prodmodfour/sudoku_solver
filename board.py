@@ -26,6 +26,15 @@ class Board:
 		self.last_move = None
 
 	def current_square_in_bounds(self):
+		"""
+		Checks whether the current square is within the 9x9 grid. This function 
+		is used to break while loops that iterate across the grid. Once the
+		progress_to_next_square() or backtrack_to_previous_square() functions
+		cause the the column_num and row num values to be outside of bounds
+		(0-8), this function returns False and the various while loops in 
+		other functions break.
+		"""
+		
 		if self.row_num < 0 or self.row_num >= self.number_rows:
 			return False
 		elif self.column_num < 0 or self.column_num >= self.number_columns:
@@ -123,6 +132,7 @@ class Board:
 			self.column_num = 8
 
 		self.last_move = 'backtrack'
+		
 
 if __name__ == "__main__":
 	pass
