@@ -2,6 +2,7 @@ from board import Board
 
 def solve(sudoku_problem):
 	"""Solves the sudoku problem by using the backtracking algorithm."""
+	
 	board = Board(sudoku_problem)
 	iteration = 0
 
