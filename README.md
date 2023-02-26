@@ -1,2 +1,2 @@
 # sudoku_solver
-A program that uses the backtracking algorithm to solve a given sudoku problem.
+A program that uses the backtracking algorithm to solve any valid sudoku problem.
