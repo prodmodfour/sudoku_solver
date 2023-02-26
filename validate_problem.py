@@ -11,6 +11,8 @@ def validate(sudoku_problem):
 	while board.current_square_in_bounds() is True:
 		board.current_square = board.state[board.row_num][board.column_num]
 
+		# 0 values are skipped as they are filler values (essentially None).
+		# They don't count as being a part of the problem.
 		if board.current_square == 0:
 			board.progress_to_next_square()
 			continue
