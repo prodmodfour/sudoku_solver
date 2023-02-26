@@ -41,6 +41,7 @@ class Board:
 			self.column_num = 0
 
 		self.last_move = 'progress'
+		
 
 	def validate_current_square(self):
 		"""

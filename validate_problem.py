@@ -9,7 +9,12 @@ def validate(sudoku_problem):
 	board = Board(sudoku_problem)
 
 	while board.current_square_in_bounds() is True:
-		if board.validate_current_square() is not True:
+		board.current_square = board.state[board.row_num][board.column_num]
+
+		if board.current_square == 0:
+			board.progress_to_next_square()
+			continue
+		elif board.validate_current_square() is False:
 			return False
 		else:
 			board.progress_to_next_square()
