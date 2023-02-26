@@ -2,6 +2,7 @@ import unittest
 from board import Board
 from solve_problem import solve
 from validate_problem import validate
+from create_problem import create_random_sudoku_problem
 
 class TestSolver(unittest.TestCase):
 
@@ -56,6 +57,19 @@ class TestSolver(unittest.TestCase):
 		program_solution = solve(sudoku_problem)
 
 		self.assertEqual(program_solution, true_solution)
+
+	def test_create(self):
+		"""
+		Tests whether the create_random_sudoku_problem method can create a valid 
+		sudoku problem in the correct format for our other functions. This test 
+		is only valid if the validate function is working correctly. This is 
+		unavoidable as create_random_sudoku_problem() returns a random value
+		that cannot easily be tested, to my knowledge at this time.
+		"""
+
+		sudoku_problem = create_random_sudoku_problem()
+
+		self.assertTrue(validate(sudoku_problem))
 
 
 if __name__ == "__main__":
